@@ -48,8 +48,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             mRecords.add(scanRecord);
             mDistance.add(distance);
             mRssi.add(rssi);
-            Log.d(TAG, "扫描到的蓝牙广播设备："+mLeDevices.size());
         }
+
+        Log.d(TAG, "扫描到的设备数量："+mLeDevices.size());
     }
 
     public BluetoothDevice getDevice(int position) {
