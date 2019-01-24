@@ -137,6 +137,7 @@ public class DeviceScanActivity extends ListActivity {
         switch (item.getItemId()) {
             case R.id.menu_scan:
                 mLeDeviceListAdapter.clear();
+                mLeDeviceListAdapter.notifyDataSetChanged();
                 scanLeDevice(true);
                 break;
             case R.id.menu_stop:
@@ -220,8 +221,8 @@ public class DeviceScanActivity extends ListActivity {
             mScanning = true;
             //根据UUID限定能够扫描到的设备
             UUID[] serviceUuids = new UUID[]{UUID.fromString("0000ae8f-0000-1000-8000-00805f9b34fb")};
-            mBluetoothAdapter.startLeScan(serviceUuids, mLeScanCallback);
-//            mBluetoothAdapter.startLeScan(mLeScanCallback);
+//            mBluetoothAdapter.startLeScan(serviceUuids, mLeScanCallback);
+            mBluetoothAdapter.startLeScan(mLeScanCallback);
         } else {
             mScanning = false;
             mBluetoothAdapter.stopLeScan(mLeScanCallback);
