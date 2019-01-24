@@ -16,7 +16,7 @@
 -->
 
 <resources>
-    <string name="app_name">扫描蓝牙ForPhone</string>
+    <string name="app_name">扫描蓝牙ForWatch</string>
     <string name="intro_message">
         <![CDATA[
         
