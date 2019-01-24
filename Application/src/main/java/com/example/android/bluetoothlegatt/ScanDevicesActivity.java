@@ -293,7 +293,6 @@ public class ScanDevicesActivity extends Activity implements View.OnClickListene
         return true;
     }
 
-    //TODO 执行完上面的请求权限后，系统会弹出提示框让用户选择是否允许改权限。选择的结果可以在回到接口中得知：
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_CODE_ACCESS_COARSE_LOCATION) {
@@ -341,7 +340,7 @@ public class ScanDevicesActivity extends Activity implements View.OnClickListene
             UUID[] serviceUuids = new UUID[]{UUID.fromString("0000ae8f-0000-1000-8000-00805f9b34fb")};
 
             mListAdapter.clear();
-
+            mListAdapter.notifyDataSetChanged();
             mBluetoothAdapter.startLeScan(serviceUuids, mLeScanCallback);
 //            mBluetoothAdapter.startLeScan(mLeScanCallback);
         } else {
