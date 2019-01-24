@@ -3,6 +3,7 @@ package com.example.android.bluetoothlegatt;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import java.util.Arrays;
  * Created by sunlipeng on 2019/1/23.
  */
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+
+    private static final String TAG = ListAdapter.class.getSimpleName();
 
     private Context mContext;
 
@@ -45,6 +48,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             mRecords.add(scanRecord);
             mDistance.add(distance);
             mRssi.add(rssi);
+            Log.d(TAG, "扫描到的蓝牙广播设备："+mLeDevices.size());
         }
     }
 

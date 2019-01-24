@@ -128,7 +128,7 @@ public class ScanDevicesActivity extends Activity implements View.OnClickListene
 
         Boolean haha = isLocationEnable(this);
         if (!haha) {
-            setLocationService();
+//            setLocationService();
         }
 
         initView();
@@ -341,8 +341,10 @@ public class ScanDevicesActivity extends Activity implements View.OnClickListene
             UUID[] serviceUuids = new UUID[]{UUID.fromString("0000ae8f-0000-1000-8000-00805f9b34fb")};
 
             mListAdapter.clear();
+            mListAdapter.notifyDataSetChanged();
 
             mBluetoothAdapter.startLeScan(serviceUuids, mLeScanCallback);
+            Log.d(TAG, "开始扫描蓝牙广播了");
 //            mBluetoothAdapter.startLeScan(mLeScanCallback);
         } else {
             mScanning = false;
@@ -403,8 +405,10 @@ public class ScanDevicesActivity extends Activity implements View.OnClickListene
     }
 
     public void stopAction(View v) {
-        mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
-        Toast.makeText(this, "已经停止蓝牙广播", Toast.LENGTH_LONG).show();
+        if (mBluetoothLeAdvertiser != null) {
+            mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
+            Toast.makeText(this, "已经停止蓝牙广播", Toast.LENGTH_LONG).show();
+        }
     }
 
     public AdvertiseSettings createAdvSettings(boolean connectable, int timeoutMillis) {
