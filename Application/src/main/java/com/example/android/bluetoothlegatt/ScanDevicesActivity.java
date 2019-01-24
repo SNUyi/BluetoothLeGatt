@@ -403,8 +403,10 @@ public class ScanDevicesActivity extends Activity implements View.OnClickListene
     }
 
     public void stopAction(View v) {
-        mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
-        Toast.makeText(this, "已经停止蓝牙广播", Toast.LENGTH_LONG).show();
+        if (mBluetoothLeAdvertiser != null) {
+            mBluetoothLeAdvertiser.stopAdvertising(mAdvertiseCallback);
+            Toast.makeText(this, "已经停止蓝牙广播", Toast.LENGTH_LONG).show();
+        }
     }
 
     public AdvertiseSettings createAdvSettings(boolean connectable, int timeoutMillis) {
